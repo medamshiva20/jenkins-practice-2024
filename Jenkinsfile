@@ -18,6 +18,7 @@ pipeline{
         {
             steps{
                 echo "Deploying..."
+                error "Hello error"
             }
         }
     }
@@ -26,7 +27,7 @@ pipeline{
             echo "This will run whether job is success or failure"
         }
         success{
-            echo "This will run when job is success0"
+            echo "This will run when job is success"
         }
         failure{
             echo "This will run when failure"

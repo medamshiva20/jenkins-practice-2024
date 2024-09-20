@@ -9,6 +9,7 @@ pipeline{
                 sh '''
                   ls -ltr
                   pwd
+                  cd ../
                 '''
             }
         }

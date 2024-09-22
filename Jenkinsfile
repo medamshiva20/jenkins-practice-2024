@@ -94,12 +94,18 @@ pipeline{
                 {
                     steps{
                         echo "On branch A"
+                        sh '''
+                        sleep 10
+                        '''
                     }
                 }
                 stage('Branch B')
                 {
                     steps{
                         echo "On branch B"
+                        sh '''
+                        sleep 10
+                        '''
                     }
                 }
                stage('Branch C')
@@ -108,11 +114,17 @@ pipeline{
                     stage('Nested 1'){
                         steps{
                             echo "In stage Nested 1 within Branch C"
+                            sh '''
+                            sleep 10
+                            '''
                         }
                     }
                     stage('Nested 2'){
                         steps{
                             echo "In stage Nested 2 within Branch C"
+                            sh '''
+                            sleep 10
+                            '''
                         }
                     }
                 }

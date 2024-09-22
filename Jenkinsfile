@@ -1,5 +1,11 @@
 pipeline{
     agent { node {label 'agent-1'} }
+     options {
+        timeout(time: 1, unit: 'HOURS') 
+    }
+     environment { 
+        USER = "sivamedam"
+    }
     stages{
         stage('Build')
         {
@@ -10,6 +16,7 @@ pipeline{
                   ls -ltr
                   pwd
                   cd ../
+                  printenv
                 '''
             }
         }
@@ -25,6 +32,17 @@ pipeline{
                 echo "Deploying..."
                // error "Hello error"
             }
+        }
+        stage('Example')
+        {
+        environment{
+        AUTH = credentials('ssh-auth')
+        }
+        steps{
+            sh '''
+              printenv
+            '''
+        }
         }
     }
     post{

@@ -88,6 +88,37 @@ pipeline{
                 echo 'Deploying to PROD'
             }
         }
+        stage('Parallel stage'){
+            parallel{
+                stage('Branch A')
+                {
+                    steps{
+                        echo "On branch A"
+                    }
+                }
+                stage('Branch B')
+                {
+                    steps{
+                        echo "On branch B"
+                    }
+                }
+               stage('Branch C')
+               {
+                stages{
+                    stage('Nested 1'){
+                        steps{
+                            echo "In stage Nested 1 within Branch C"
+                        }
+                    }
+                    stage('Nested 2'){
+                        steps{
+                            echo "In stage Nested 2 within Branch C"
+                        }
+                    }
+                }
+               }
+            }
+        }
     }
     post{
         always{
